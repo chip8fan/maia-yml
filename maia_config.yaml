@@ -1,0 +1,26 @@
+%YAML 1.2
+---
+gpu: 0
+
+dataset:
+  input_train: '/Users/me/Downloads/chess/3000-train/' # This uses glob so training/*/* is probably the end
+  input_test: '/Users/me/Downloads/chess/3000-test/' # This uses glob so validate/*/* is probably the end
+
+training:
+    batch_size: 1024
+    test_steps: 2000
+    train_avg_report_steps: 50
+    total_steps: 1000
+    shuffle_size: 250000
+    lr_values:
+        - 0.01
+    lr_boundaries:
+        - 1000
+    policy_loss_weight: 1.0            # weight of policy loss
+    value_loss_weight: 1.0             # weight of value loss
+
+model:
+  filters: 64
+  residual_blocks: 6
+  se_ratio: 8
+...
